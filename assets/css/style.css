@@ -146,12 +146,15 @@ p { color: var(--muted); margin: 0 0 16px; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 84px;
+  padding-top: 14px;
+  padding-bottom: 14px;
   gap: 16px;
 }
 
-.brand { width: 190px; flex-shrink: 0; }
-.brand img { width: 100%; height: auto; }
+/* Logo file has generous transparent padding around the mark, so it's sized
+   by height (not width) to keep it legible without cropping the source file. */
+.brand { flex-shrink: 0; }
+.brand img { height: 76px; width: auto; display: block; }
 
 .header-phone {
   display: flex;
@@ -216,21 +219,19 @@ p { color: var(--muted); margin: 0 0 16px; }
   gap: 16px;
 }
 
-.hero-photo-placeholder {
-  height: 320px;
+.hero-photo-frame {
   border-radius: var(--radius);
-  border: 2px dashed rgba(212, 175, 55, 0.4);
-  background: rgba(255, 255, 255, 0.03);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  color: var(--gold-light);
-  font-weight: 600;
-  font-size: 0.95rem;
-  text-align: center;
-  padding: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: var(--shadow);
+  aspect-ratio: 4 / 3;
+}
+
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ---------- Trust Bar ---------- */
@@ -510,7 +511,7 @@ p { color: var(--muted); margin: 0 0 16px; }
   gap: 8px;
 }
 
-.footer-logo { width: 170px; margin-bottom: 8px; }
+.footer-logo { height: 130px; width: auto; margin-bottom: 8px; }
 
 .footer-tagline { color: var(--silver-light); font-size: 0.95rem; margin-bottom: 8px; }
 
@@ -540,14 +541,14 @@ p { color: var(--muted); margin: 0 0 16px; }
   .before-after-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
   .testimonials { grid-template-columns: 1fr; }
   .hero .container { grid-template-columns: 1fr; }
-  .hero-photo-placeholder { order: -1; height: 240px; }
+  .hero-photo-frame { order: -1; }
   .trust-bar-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
 }
 
 @media (max-width: 720px) {
   section { padding: 56px 0; }
-  .site-header .container { padding: 0 16px; }
-  .brand { width: 148px; }
+  .site-header .container { padding: 10px 16px; }
+  .brand img { height: 58px; }
   .header-phone span { display: none; }
   .header-phone { padding: 10px; }
   .grid-5 { grid-template-columns: 1fr; }
