@@ -169,8 +169,8 @@ p { color: var(--muted); margin: 0 0 16px; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 28px;
-  padding-bottom: 40px;
+  padding-top: 16px;
+  padding-bottom: 28px;
   text-align: center;
   max-width: 760px;
   margin: 0 auto;
@@ -178,24 +178,14 @@ p { color: var(--muted); margin: 0 0 16px; }
 
 /* Logo file has generous transparent padding around the mark, so it's sized
    by height (not width) to keep it legible without cropping the source file.
-   Original logo unchanged — only its display height is increased (+40%). */
-.hero-logo-link { display: block; margin-bottom: 22px; }
-.hero-logo { height: 95px; width: auto; display: block; }
-
-.hero-eyebrow {
-  display: block;
-  color: var(--gold-light);
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  margin-bottom: 24px;
-}
+   Original logo artwork unchanged — only its display height changes. */
+.hero-logo-link { display: block; margin-bottom: 14px; }
+.hero-logo { height: 67px; width: auto; display: block; }
 
 .hero h1 {
   color: #fff;
   font-size: clamp(2.1rem, 6vw, 3.4rem);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   text-wrap: balance;
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
 }
@@ -204,7 +194,7 @@ p { color: var(--muted); margin: 0 0 16px; }
   color: var(--silver-light);
   font-size: 1.08rem;
   max-width: 480px;
-  margin: 0 auto 22px;
+  margin: 0 auto 18px;
 }
 
 .hero-actions {
@@ -214,8 +204,19 @@ p { color: var(--muted); margin: 0 0 16px; }
   gap: 16px;
 }
 
+/* Sits below the CTA button — top margin keeps it from crowding the button. */
+.hero-eyebrow {
+  display: block;
+  color: var(--gold-light);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin: 20px 0 8px;
+}
+
 .hero-trust-line {
-  margin: 14px 0 0;
+  margin: 0;
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.4px;
@@ -540,11 +541,12 @@ p { color: var(--muted); margin: 0 0 16px; }
 
 @media (max-width: 720px) {
   section { padding: 56px 0; }
-  .hero-logo-link { margin-bottom: 14px; }
-  .hero-logo { height: 73px; }
-  .hero-content { padding-top: 20px; padding-bottom: 32px; }
-  .hero-eyebrow { margin-bottom: 18px; }
-  .hero p.lead { font-size: 1rem; margin-bottom: 18px; }
+  .hero-logo-link { margin-bottom: 10px; }
+  .hero-logo { height: 51px; }
+  .hero-content { padding-top: 12px; padding-bottom: 22px; }
+  .hero h1 { margin-bottom: 10px; }
+  .hero p.lead { font-size: 1rem; margin-bottom: 14px; }
+  .hero-eyebrow { margin: 14px 0 6px; }
   .hero-trust-line { font-size: 0.76rem; }
   .grid-5 { grid-template-columns: 1fr; }
   .problem-list { grid-template-columns: 1fr; max-width: 420px; }
