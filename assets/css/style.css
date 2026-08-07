@@ -182,23 +182,6 @@ p { color: var(--muted); margin: 0 0 16px; }
 .brand { flex-shrink: 0; }
 .brand img { height: 68px; width: auto; display: block; }
 
-.header-phone {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #fff;
-  font-weight: 700;
-  font-size: 1rem;
-  padding: 10px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(4px);
-  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
-}
-.header-phone:hover { border-color: var(--gold); color: var(--gold-light); background: rgba(0, 0, 0, 0.35); }
-.header-phone svg { width: 20px; height: 20px; fill: var(--gold); flex-shrink: 0; }
-
 /* ---------- Hero content ---------- */
 .hero-content {
   position: relative;
@@ -566,8 +549,6 @@ p { color: var(--muted); margin: 0 0 16px; }
   section { padding: 56px 0; }
   .hero-header-inner { padding: 10px 16px; }
   .brand img { height: 52px; }
-  .header-phone span { display: none; }
-  .header-phone { padding: 10px; }
   .hero-content { padding-top: 12px; padding-bottom: 40px; }
   .hero p.lead { font-size: 1rem; margin-bottom: 24px; }
   .grid-5 { grid-template-columns: 1fr; }
