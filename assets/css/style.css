@@ -389,7 +389,7 @@ p { color: var(--muted); margin: 0 0 16px; }
 /* ---------- Reviews ---------- */
 .testimonials {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 
@@ -405,13 +405,6 @@ p { color: var(--muted); margin: 0 0 16px; }
 .testimonial p.quote { color: var(--ink); font-style: italic; margin-bottom: 18px; }
 .testimonial .author { font-weight: 700; font-size: 0.9rem; color: var(--black); }
 .testimonial .author span { display: block; font-weight: 400; color: var(--muted); font-size: 0.82rem; }
-
-.review-placeholder {
-  border-style: dashed;
-  background: var(--off-white);
-}
-.review-placeholder .quote,
-.review-placeholder .author { color: var(--muted); }
 
 /* ---------- Estimate / Lead Form ---------- */
 .estimate-section {
