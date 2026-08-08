@@ -542,7 +542,7 @@ p { color: var(--muted); margin: 0 0 16px; }
 @media (max-width: 720px) {
   section { padding: 56px 0; }
   .hero-logo-link { margin-bottom: 7px; }
-  .hero-logo { height: 72px; }
+  .hero-logo { height: 79px; }
   .hero-content { padding-top: 12px; padding-bottom: 22px; }
   .hero h1 { margin-bottom: 10px; }
   .hero p.lead { font-size: 1rem; margin-bottom: 14px; }
