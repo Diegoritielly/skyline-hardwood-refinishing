@@ -179,8 +179,8 @@ p { color: var(--muted); margin: 0 0 16px; }
 /* Logo file has generous transparent padding around the mark, so it's sized
    by height (not width) to keep it legible without cropping the source file.
    Original logo artwork unchanged — only its display height changes. */
-.hero-logo-link { display: block; margin-bottom: 14px; }
-.hero-logo { height: 86px; width: auto; display: block; }
+.hero-logo-link { display: block; margin-bottom: 10px; }
+.hero-logo { height: 95px; width: auto; display: block; }
 
 .hero h1 {
   color: #fff;
@@ -541,8 +541,8 @@ p { color: var(--muted); margin: 0 0 16px; }
 
 @media (max-width: 720px) {
   section { padding: 56px 0; }
-  .hero-logo-link { margin-bottom: 10px; }
-  .hero-logo { height: 65px; }
+  .hero-logo-link { margin-bottom: 7px; }
+  .hero-logo { height: 72px; }
   .hero-content { padding-top: 12px; padding-bottom: 22px; }
   .hero h1 { margin-bottom: 10px; }
   .hero p.lead { font-size: 1rem; margin-bottom: 14px; }
