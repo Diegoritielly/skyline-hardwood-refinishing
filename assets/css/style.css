@@ -401,6 +401,15 @@ p { color: var(--muted); margin: 0 0 16px; }
   box-shadow: var(--shadow-soft);
 }
 
+.review-source {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.google-icon { width: 20px; height: 20px; flex-shrink: 0; }
+.review-source span { font-weight: 700; font-size: 0.82rem; color: var(--muted); }
+
 .stars { color: var(--gold-dark); font-size: 1rem; margin-bottom: 14px; letter-spacing: 2px; }
 .testimonial p.quote { color: var(--ink); font-style: italic; margin-bottom: 18px; }
 .testimonial .author { font-weight: 700; font-size: 0.9rem; color: var(--black); }
