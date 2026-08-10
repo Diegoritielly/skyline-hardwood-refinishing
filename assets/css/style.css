@@ -403,11 +403,12 @@ p { color: var(--muted); margin: 0 0 16px; }
 
 .review-source {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
   margin-bottom: 10px;
 }
-.google-icon { width: 20px; height: 20px; flex-shrink: 0; }
+.google-icon { width: 18px; height: 18px; flex-shrink: 0; }
 .review-source span { font-weight: 700; font-size: 0.82rem; color: var(--muted); }
 
 .stars { color: var(--gold-dark); font-size: 1rem; margin-bottom: 14px; letter-spacing: 2px; }
