@@ -519,6 +519,25 @@ p { color: var(--muted); margin: 0 0 16px; }
   width: 100%;
 }
 
+/* ---------- Floating WhatsApp Button ---------- */
+.whatsapp-fab {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 999;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25d366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.whatsapp-fab:hover { transform: scale(1.06); box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35); }
+.whatsapp-fab svg { width: 30px; height: 30px; }
+
 /* ---------- Responsive ---------- */
 @media (min-width: 981px) {
   /* Cap the hero on desktop so it reads as a strong banner, not a nearly
@@ -536,6 +555,8 @@ p { color: var(--muted); margin: 0 0 16px; }
 
 @media (max-width: 720px) {
   section { padding: 56px 0; }
+  .whatsapp-fab { width: 52px; height: 52px; right: 16px; bottom: 16px; }
+  .whatsapp-fab svg { width: 27px; height: 27px; }
   .hero-logo-link { margin-bottom: 7px; }
   .hero-logo { height: 130px; }
   .hero-content { padding-top: 12px; padding-bottom: 22px; }
