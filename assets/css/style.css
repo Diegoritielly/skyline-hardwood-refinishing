@@ -221,6 +221,39 @@ p { color: var(--muted); margin: 0 0 16px; }
   opacity: 0.9;
 }
 
+/* ---------- Thank You page ---------- */
+.thankyou-section {
+  background:
+    radial-gradient(1000px 480px at 50% -10%, rgba(212, 175, 55, 0.16), transparent 60%),
+    linear-gradient(160deg, var(--black) 0%, var(--black-soft) 100%);
+}
+
+.thankyou-section .hero-eyebrow { margin-top: 0; }
+
+.thankyou-check {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 22px rgba(212, 175, 55, 0.35);
+}
+.thankyou-check svg { width: 30px; height: 30px; fill: var(--black); }
+
+.btn-whatsapp { background: #25d366; color: #fff; }
+.btn-whatsapp:hover { background: #1ebe5b; }
+.btn-whatsapp svg { width: 22px; height: 22px; }
+
+.btn-instagram {
+  background: linear-gradient(135deg, #f58529, #dd2a7b 45%, #8134af 70%, #515bd4);
+  color: #fff;
+}
+.btn-instagram:hover { filter: brightness(1.08); }
+.btn-instagram svg { width: 20px; height: 20px; }
+
 /* ---------- Trust Bar ---------- */
 .trust-bar {
   background: var(--black-soft);
