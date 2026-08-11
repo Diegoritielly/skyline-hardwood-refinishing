@@ -223,9 +223,8 @@ p { color: var(--muted); margin: 0 0 16px; }
 
 /* ---------- Thank You page ---------- */
 .thankyou-section {
-  background:
-    radial-gradient(1000px 480px at 50% -10%, rgba(212, 175, 55, 0.16), transparent 60%),
-    linear-gradient(160deg, var(--black) 0%, var(--black-soft) 100%);
+  background-color: var(--black);
+  background: linear-gradient(160deg, var(--black) 0%, var(--black-soft) 100%);
 }
 
 .thankyou-section .hero-eyebrow { margin-top: 0; }
