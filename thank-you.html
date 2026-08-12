@@ -21,7 +21,8 @@
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '1709627813647184');
   fbq('track', 'PageView');
-  fbq('track', 'Lead');
+  // Lead is tracked via Meta's Event Setup Tool URL rule for this page —
+  // no manual fbq('track','Lead') here, to avoid double-counting every lead.
   </script>
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1709627813647184&ev=PageView&noscript=1"
