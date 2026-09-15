@@ -181,7 +181,7 @@ p { color: var(--muted); margin: 0 0 16px; }
 
 .hero h1 {
   color: #fff;
-  font-size: clamp(2.1rem, 6vw, 3.4rem);
+  font-size: clamp(1.85rem, 6vw, 3.4rem);
   margin-bottom: 14px;
   text-wrap: balance;
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
@@ -463,6 +463,67 @@ p { color: var(--muted); margin: 0 0 16px; }
   display: block;
 }
 
+/* ---------- Project Carousel (reuses .ba-photo's visual treatment above;
+   these rules only add the horizontal scroll-snap layout/behavior) ---------- */
+.carousel {
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+
+.carousel-slide {
+  flex: 0 0 calc((100% - 2 * 20px) / 3);
+  scroll-snap-align: start;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0;
+}
+.carousel-arrow:hover { box-shadow: var(--shadow); }
+.carousel-arrow-prev { left: -14px; }
+.carousel-arrow-next { right: -14px; }
+.carousel-arrow svg { width: 20px; height: 20px; fill: var(--black); }
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+.carousel-dots button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--border);
+  cursor: pointer;
+}
+.carousel-dots button.active { background: var(--gold-dark); }
+
 /* ---------- Process ---------- */
 .steps-3 {
   display: grid;
@@ -659,6 +720,7 @@ p { color: var(--muted); margin: 0 0 16px; }
   .testimonials { grid-template-columns: 1fr; }
   .trust-bar-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .services-showcase { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; gap: 30px; }
+  .carousel-slide { flex-basis: calc((100% - 20px) / 2); }
 }
 
 @media (max-width: 720px) {
@@ -681,4 +743,9 @@ p { color: var(--muted); margin: 0 0 16px; }
   .btn-lg { width: 100%; }
   .hero-actions { flex-direction: column; }
   .hero-actions .btn { width: 100%; }
+
+  /* One project per view on mobile, swipe/scroll-snap only — the arrows
+     have too little room to sit outside the track at this width. */
+  .carousel-slide { flex-basis: 100%; }
+  .carousel-arrow { display: none; }
 }
