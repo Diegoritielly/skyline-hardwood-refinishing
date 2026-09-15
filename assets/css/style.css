@@ -187,6 +187,12 @@ p { color: var(--muted); margin: 0 0 16px; }
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
 }
 
+.hero-h1-sep {
+  color: var(--gold-light);
+  font-weight: 400;
+  margin: 0 4px;
+}
+
 .hero p.lead {
   color: var(--silver-light);
   font-size: 1.08rem;
@@ -467,6 +473,7 @@ p { color: var(--muted); margin: 0 0 16px; }
    these rules only add the horizontal scroll-snap layout/behavior) ---------- */
 .carousel {
   position: relative;
+  padding: 0 40px;
 }
 
 .carousel-track {
@@ -476,14 +483,27 @@ p { color: var(--muted); margin: 0 0 16px; }
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+  /* Tell the browser this element owns horizontal panning and shouldn't
+     hand the gesture off to page-level scroll/navigation — the fix for
+     swipe feeling unresponsive or not registering on iOS Safari. */
+  touch-action: pan-x;
+  overscroll-behavior-x: contain;
   scrollbar-width: none;
 }
 .carousel-track::-webkit-scrollbar { display: none; }
 
 .carousel-slide {
-  flex: 0 0 calc((100% - 2 * 20px) / 3);
+  flex-shrink: 0;
   scroll-snap-align: start;
 }
+
+/* Recent Work: 2 slides per view on tablet/desktop, 1 on mobile (below). */
+#galleryTrack.carousel-track { gap: 20px; }
+#galleryTrack > .carousel-slide { flex-basis: calc((100% - 20px) / 2); }
+
+/* Reviews: 3 per view on wide desktop, 2 on tablet, 1 on mobile (below). */
+#reviewsTrack.carousel-track { gap: 24px; }
+#reviewsTrack > .carousel-slide { flex-basis: calc((100% - 2 * 24px) / 3); }
 
 .carousel-arrow {
   position: absolute;
@@ -503,8 +523,8 @@ p { color: var(--muted); margin: 0 0 16px; }
   padding: 0;
 }
 .carousel-arrow:hover { box-shadow: var(--shadow); }
-.carousel-arrow-prev { left: -14px; }
-.carousel-arrow-next { right: -14px; }
+.carousel-arrow-prev { left: 0; }
+.carousel-arrow-next { right: 0; }
 .carousel-arrow svg { width: 20px; height: 20px; fill: var(--black); }
 
 .carousel-dots {
@@ -720,7 +740,7 @@ p { color: var(--muted); margin: 0 0 16px; }
   .testimonials { grid-template-columns: 1fr; }
   .trust-bar-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .services-showcase { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; gap: 30px; }
-  .carousel-slide { flex-basis: calc((100% - 20px) / 2); }
+  #reviewsTrack > .carousel-slide { flex-basis: calc((100% - 24px) / 2); }
 }
 
 @media (max-width: 720px) {
@@ -744,8 +764,12 @@ p { color: var(--muted); margin: 0 0 16px; }
   .hero-actions { flex-direction: column; }
   .hero-actions .btn { width: 100%; }
 
-  /* One project per view on mobile, swipe/scroll-snap only — the arrows
-     have too little room to sit outside the track at this width. */
-  .carousel-slide { flex-basis: 100%; }
+  /* One slide per view on mobile, swipe/scroll-snap only — the arrows
+     have too little room to sit outside the track at this width. Selectors
+     here must match the ID-scoped specificity of the base rules above to
+     actually win at this breakpoint. */
+  #galleryTrack > .carousel-slide,
+  #reviewsTrack > .carousel-slide { flex-basis: 100%; }
   .carousel-arrow { display: none; }
+  .carousel { padding: 0; }
 }

@@ -6,21 +6,25 @@ document.addEventListener('DOMContentLoaded', function () {
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Project gallery carousel: a horizontally scrolling, CSS scroll-snap
-  // track. Touch/swipe works natively (no custom touch handlers needed);
-  // the arrows just nudge the scroll position by one slide, and the dots
-  // reflect/control which slide is currently in view.
-  var galleryTrack = document.getElementById('galleryTrack');
-  if (galleryTrack) {
-    var slides = Array.prototype.slice.call(galleryTrack.children);
-    var prevBtn = document.getElementById('galleryPrev');
-    var nextBtn = document.getElementById('galleryNext');
-    var dotsWrap = document.getElementById('galleryDots');
+  // Shared setup for both the project gallery and reviews carousels: a
+  // horizontally scrolling, CSS scroll-snap track. Touch/swipe works
+  // natively via the browser's own scroll handling (no custom touch
+  // handlers needed, which also avoids fighting native momentum
+  // scrolling on iOS); the arrows just nudge the scroll position by one
+  // slide, and the dots reflect/control which slide is currently in view.
+  function setupCarousel(trackId, prevId, nextId, dotsId, label) {
+    var track = document.getElementById(trackId);
+    if (!track) return;
+
+    var slides = Array.prototype.slice.call(track.children);
+    var prevBtn = document.getElementById(prevId);
+    var nextBtn = document.getElementById(nextId);
+    var dotsWrap = document.getElementById(dotsId);
 
     slides.forEach(function (slide, i) {
       var dot = document.createElement('button');
       dot.type = 'button';
-      dot.setAttribute('aria-label', 'Go to project ' + (i + 1));
+      dot.setAttribute('aria-label', 'Go to ' + label + ' ' + (i + 1));
       dot.addEventListener('click', function () {
         slide.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
       });
@@ -29,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var dots = Array.prototype.slice.call(dotsWrap.children);
 
     function updateActiveDot() {
-      var trackLeft = galleryTrack.getBoundingClientRect().left;
+      var trackLeft = track.getBoundingClientRect().left;
       var closestIndex = 0;
       var closestDist = Infinity;
       slides.forEach(function (slide, i) {
@@ -46,21 +50,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function scrollByOneSlide(direction) {
       var slideWidth = slides[0].getBoundingClientRect().width;
-      var gap = parseFloat(getComputedStyle(galleryTrack).columnGap || getComputedStyle(galleryTrack).gap || '0');
-      galleryTrack.scrollBy({ left: direction * (slideWidth + gap), behavior: 'smooth' });
+      var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '0');
+      track.scrollBy({ left: direction * (slideWidth + gap), behavior: 'smooth' });
     }
 
     if (prevBtn) prevBtn.addEventListener('click', function () { scrollByOneSlide(-1); });
     if (nextBtn) nextBtn.addEventListener('click', function () { scrollByOneSlide(1); });
 
     var scrollTimer;
-    galleryTrack.addEventListener('scroll', function () {
+    track.addEventListener('scroll', function () {
       clearTimeout(scrollTimer);
       scrollTimer = setTimeout(updateActiveDot, 100);
     });
 
     updateActiveDot();
   }
+
+  setupCarousel('galleryTrack', 'galleryPrev', 'galleryNext', 'galleryDots', 'project');
+  setupCarousel('reviewsTrack', 'reviewsPrev', 'reviewsNext', 'reviewsDots', 'review');
 
   // Submit the estimate form via FormSubmit's dedicated AJAX endpoint
   // (https://formsubmit.co/ajax/<email>), not the plain form-post endpoint
