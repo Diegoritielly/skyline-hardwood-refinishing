@@ -665,4 +665,15 @@ p { color: var(--muted); margin: 0 0 16px; }
   .btn-lg { width: 100%; }
   .hero-actions { flex-direction: column; }
   .hero-actions .btn { width: 100%; }
+
+  /* Our Services (mobile only): the base .service-feature-image margin-bottom
+     and the button's margin-top: auto (which collapses to 0 in an
+     unstretched single-column mobile card) weren't leaving enough visible
+     breathing room around the CTA, so both are overridden explicitly here. */
+  .service-feature-image { margin-bottom: 28px; }
+  .service-feature .btn {
+    margin-top: 0;
+    margin-bottom: 50px;
+    align-self: center;
+  }
 }
