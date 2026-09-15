@@ -1,0 +1,33 @@
+# ==========================================================================
+# Skyline Remodeling & Construction — hardwood-floor-refinishing landing page
+# Scoped to THIS directory only (public_html/hardwood-floor-refinishing/).
+# Apache applies a subdirectory .htaccess in addition to the domain root's
+# WordPress .htaccess — this file does not replace or edit that one, and
+# has no rewrite rules, so it cannot interfere with WordPress routing.
+#
+# Purpose: stop different visitors/devices from being served different
+# cached versions of this landing page.
+#   - HTML (index.html, thank-you.html) must always be revalidated with
+#     the server, never served straight from a stale cache.
+#   - Static assets (CSS/JS/images) can be cached long-term, because a
+#     real deploy changes their URL via the ?v= query string, so a long
+#     cache lifetime never causes stale content to be shown.
+# ==========================================================================
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+</IfModule>
